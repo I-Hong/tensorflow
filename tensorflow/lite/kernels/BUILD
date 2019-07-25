@@ -708,6 +708,7 @@ cc_test(
     name = "batch_to_space_nd_test",
     size = "small",
     srcs = ["batch_to_space_nd_test.cc"],
+    tags = ["tflite_nnapi"],
     deps = [
         ":builtin_ops",
         ":test_main",
@@ -979,6 +980,7 @@ cc_test(
     name = "reduce_test",
     size = "small",
     srcs = ["reduce_test.cc"],
+    tags = ["tflite_nnapi"],
     deps = [
         ":builtin_ops",
         ":test_main",
@@ -1828,6 +1830,21 @@ cc_test(
     srcs = ["matrix_set_diag_test.cc"],
     deps = [
         ":builtin_ops",
+        ":test_main",
+        ":test_util",
+        "//tensorflow/lite:framework",
+        "@com_google_googletest//:gtest",
+    ],
+)
+
+cc_test(
+    name = "quant_basic_lstm_test",
+    size = "small",
+    srcs = ["quant_basic_lstm_test.cc"],
+    tags = ["tflite_nnapi"],
+    deps = [
+        ":builtin_ops",
+        ":kernel_util",
         ":test_main",
         ":test_util",
         "//tensorflow/lite:framework",
